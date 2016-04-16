@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 app.get('/todos', middleware.requireAuthentication, function(req, res) {
 	var query = req.query;
 	var where = {
-		userID: req.user.get('id')
+		userId: req.user.get('id')
 	};
 
 	if (query.hasOwnProperty('completed') && query.completed === 'true') {
@@ -59,7 +59,7 @@ app.get('/todos/:id', middleware.requireAuthentication, function(req, res) {
 		} else {
 			res.status(404).send();
 		}	
-	}, function(e) {
+	}, function (e) {
 		res.status(500).send();
 	});
 });
